@@ -4,6 +4,26 @@ public class Radio {
     private int currentStation;
     private int currentVolume;
 
+    public void setCurrentStation(int currentStation) {
+        if (currentStation < 0) {
+            return;
+        }
+        if (currentStation > 9) {
+            return;
+        }
+        this.currentStation = currentStation;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < 0) {
+            return;
+        }
+        if (currentVolume > 10) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
     public int getCurrentStation() {
         return currentStation;
     }
@@ -12,67 +32,32 @@ public class Radio {
         return currentVolume;
     }
 
-    /*
-    Метод переключения станции на следующую. Логика: прибавляя к текущему номеру станции 1, получаем число,
-    целочисленный остаток от деления на 10 которого дает нам номер следующей станции
-    */
-    public void switchToNextStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;
+    public void next() {
+        if (currentStation != 9) {
+            currentStation++;
+        } else {
+            currentStation = 0;
         }
-        if (newCurrentStation > 9) {
-            return;
-        }
-        currentStation = (newCurrentStation + 1) % 10;
-
     }
 
-    /*
-    Метод переключений станции на предыдущую. Логика: прибавляя к номеру текущей станции 9, получаем двузначное число,
-    целочисленный остаток от деления на 10 которого дает нам номер предыдущей станции
-    */
-
-    public void switchToPrevStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;
+    public void prev() {
+        if (currentStation != 0) {
+            currentStation--;
+        } else {
+            currentStation = 9;
         }
-        if (newCurrentStation > 9) {
-            return;
-        }
-        currentStation = (newCurrentStation + 9) % 10;
-
     }
 
-    /*Метод выбора радиостанции через прямое указание её номера*/
-    public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
-            return;
+    public void increaseVolume() {
+        if (currentVolume < 10) {
+            currentVolume++;
         }
-        if (newCurrentStation > 9) {
-            return;
-        }
-        currentStation = newCurrentStation;
-
     }
 
-    /*Метод увеличения громкости на 1*/
-    public void increaseVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
-            return;
+    public void decreaseVolume() {
+        if (currentVolume > 0) {
+            currentVolume--;
         }
-        if (newCurrentVolume < 10) {
-            currentVolume = newCurrentVolume + 1;
-        } else currentVolume = 10;
-    }
-
-    /*Метод уменьшения громкости на 1*/
-    public void decreaseVolume(int newCurrentVolume) {
-        if (newCurrentVolume <= 0) {
-            return;
-        }
-        if (newCurrentVolume <= 10) {
-            currentVolume = newCurrentVolume - 1;
-        } else currentVolume = 0;
     }
 
 }
