@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 
 public class RadioTest {
     Radio radio = new Radio(73);
-    Radio radioDefault = new Radio(); // Тестирование при значениях количества станций по умолчанию (10)
+    Radio radioDefault = new Radio();
+
+    // Тестирование при значениях количества станций по умолчанию (10)
 
     // setCurrentStation
     @Test
