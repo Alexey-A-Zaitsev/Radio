@@ -31,7 +31,7 @@ public class Radio {
     Метод переключений станции на предыдущую. Логика: прибавляя к номеру текущей станции 9, получаем двузначное число,
     целочисленный остаток от деления на 10 которого дает нам номер предыдущей станции
     */
-
+    
     public void switchToPrevStation(int newCurrentStation) {
         if (newCurrentStation < 0) {
             return;
